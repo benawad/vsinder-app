@@ -30,7 +30,9 @@ export const LocationAutocomplete: React.FC<LocationAutocompleteProps> = ({
   const [showBorder, setShowBorder] = useState(false);
   const r = useRef<GooglePlacesAutocompleteRef>(null);
   useEffect(() => {
-    r.current?.setAddressText(defaultValue);
+    if (defaultValue) {
+      r.current?.setAddressText(defaultValue);
+    }
   }, []);
   return (
     <GooglePlacesAutocomplete
