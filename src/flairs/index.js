@@ -1,0 +1,13 @@
+export { default as Angular } from "./Angular";
+export { default as C } from "./C";
+export { default as CSharp } from "./CSharp";
+export { default as Cpp } from "./Cpp";
+export { default as Dart } from "./Dart";
+export { default as Flutter } from "./Flutter";
+export { default as Go } from "./Go";
+export { default as Java } from "./Java";
+export { default as Kotlin } from "./Kotlin";
+export { default as Python } from "./Python";
+export { default as React1 } from "./React";
+export { default as Swift } from "./Swift";
+export { default as Vue } from "./Vue";
