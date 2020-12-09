@@ -154,6 +154,7 @@ export const EditProfile: React.FC<ProfileStackNav<"editProfile">> = ({
                       options={[
                         { label: "male", value: "male" },
                         { label: "female", value: "female" },
+                        { label: "non-binary", value: "non-binary" }
                       ]}
                     />
                   </FormSpacer>
