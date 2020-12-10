@@ -11,3 +11,4 @@ export { default as Python } from "./Python";
 export { default as React1 } from "./React";
 export { default as Swift } from "./Swift";
 export { default as Vue } from "./Vue";
+export { default as Rust } from "./Rust";
