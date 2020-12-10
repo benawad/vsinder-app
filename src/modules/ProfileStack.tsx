@@ -7,6 +7,7 @@ import { CodeSnippeter } from "./ProfileStack/CodeSnippeter";
 import { EditProfile } from "./ProfileStack/EditProfile";
 import { ManageCodePics } from "./ProfileStack/ManageCodePics";
 import { ProfileStackParamList } from "./ProfileStack/ProfileNav";
+import { Settings } from "./ProfileStack/Settings";
 import { ViewProfile } from "./ProfileStack/ViewProfile";
 import { ViewCardScreen } from "./ViewCardScreen";
 
@@ -20,6 +21,11 @@ export const ProfileStack: React.FC<{ isNewUser?: boolean }> = ({
       screenOptions={useHeaderOptions()}
       initialRouteName={isNewUser ? "editProfile" : "viewProfile"}
     >
+      <Stack.Screen
+        options={{ title: "Settings" }}
+        name="settings"
+        component={Settings}
+      />
       <Stack.Screen
         options={{ headerShown: false }}
         name="viewProfile"

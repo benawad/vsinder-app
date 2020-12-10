@@ -17,10 +17,12 @@ export const Cog = () => {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        paddingRight: 16,
+        paddingRight: 4,
+        paddingLeft: 8,
+        paddingBottom: 4,
       }}
       onPress={() => {
-        navigation.navigate("changeTheme");
+        navigation.navigate("settings");
       }}
     >
       <Ionicons name="md-settings" size={27} color={buttonBackground} />

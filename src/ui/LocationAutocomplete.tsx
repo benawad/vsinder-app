@@ -43,6 +43,7 @@ export const LocationAutocomplete: React.FC<LocationAutocompleteProps> = ({
           onFocus();
           setShowBorder(true);
         },
+        onChangeText: (t) => onLocation(t),
         onBlur: () => setShowBorder(false),
         style: {
           paddingVertical: 8,

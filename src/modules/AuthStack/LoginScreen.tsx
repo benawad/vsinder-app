@@ -21,6 +21,7 @@ export const LoginScreen: React.FC<AuthStackNav<"login">> = ({
 }) => {
   const [open, setOpen] = useState(Platform.OS === "ios");
   const [underAge, setUnderAge] = useState(false);
+  const [appleSignIn, setAppleSignIn] = useState(false);
   const [mutate] = useMutation(defaultMutationFn);
   const { editorBackground } = useTheme();
   return (
@@ -57,15 +58,21 @@ export const LoginScreen: React.FC<AuthStackNav<"login">> = ({
       </Modal>
       <Center>
         <View style={{ width: "100%" }}>
-          <TouchableOpacity
-            onPress={() => Linking.openURL(`https://www.vsinder.com/terms`)}
-            style={{ marginBottom: 40 }}
-          >
-            <MyText style={{ textDecorationLine: "underline" }}>
-              By tapping Sign in/login with Github, Apple, or Email, you agree
-              to our terms
+          {!appleSignIn ? (
+            <TouchableOpacity
+              onPress={() => Linking.openURL(`https://www.vsinder.com/terms`)}
+              style={{ marginBottom: 40 }}
+            >
+              <MyText style={{ textDecorationLine: "underline" }}>
+                By tapping Sign in/login with Github, Apple, or Email, you agree
+                to our terms
+              </MyText>
+            </TouchableOpacity>
+          ) : (
+            <MyText style={{ marginBottom: 20, fontSize: 18 }}>
+              You are logged in with Apple, link your GitHub to continue:
             </MyText>
-          </TouchableOpacity>
+          )}
           <MyButton
             style={{ marginBottom: 30 }}
             onPress={async () => {
@@ -104,9 +111,9 @@ export const LoginScreen: React.FC<AuthStackNav<"login">> = ({
               showMessage({ message: "something went wrong", type: "danger" });
             }}
           >
-            login with GitHub to get started
+            {appleSignIn ? `link GitHub` : `login with GitHub to get started`}
           </MyButton>
-          {Platform.OS === "ios" ? (
+          {Platform.OS === "ios" && !appleSignIn ? (
             <>
               <AppleAuthentication.AppleAuthenticationButton
                 buttonType={
@@ -119,18 +126,19 @@ export const LoginScreen: React.FC<AuthStackNav<"login">> = ({
                 style={{ height: 44 }}
                 onPress={async () => {
                   try {
-                    const credential = await AppleAuthentication.signInAsync({
+                    await AppleAuthentication.signInAsync({
                       requestedScopes: [
                         AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
                         AppleAuthentication.AppleAuthenticationScope.EMAIL,
                       ],
                     });
-                    const tokens = await mutate([
-                      "/apple/login",
-                      credential,
-                      "POST",
-                    ]);
-                    navigation.navigate("tokens", tokens);
+                    setAppleSignIn(true);
+                    // const tokens = await mutate([
+                    //   "/apple/login",
+                    //   credential,
+                    //   "POST",
+                    // ]);
+                    // navigation.navigate("tokens", tokens);
                     // signed in
                   } catch (e) {
                     if (e.code === "ERR_CANCELED") {

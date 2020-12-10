@@ -1,12 +1,12 @@
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RouteProp } from "@react-navigation/native";
-import { CodeImgIdItem } from "../../types";
 
 export type ProfileStackParamList = {
   editProfile: undefined;
   viewProfile: undefined;
   changeTheme: undefined;
   manageCodePics: undefined;
+  settings: undefined;
   codeSnippeter:
     | undefined
     | {
