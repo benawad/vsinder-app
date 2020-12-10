@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Dimensions, Image, SafeAreaView } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import { BackHandler, Dimensions, Image, SafeAreaView } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import ImageZoom from "react-native-image-pan-zoom";
 import { MyButton } from "./MyButton";
@@ -13,7 +13,25 @@ export const FullscreenImageZoomContext = React.createContext<
 >(() => {});
 
 export const FullscreenImageZoomProvider: React.FC = ({ children }) => {
+  const srcRef = useRef("");
   const [src, setSrc] = useState("");
+  srcRef.current = src;
+
+  useEffect(() => {
+    const onBackPress = () => {
+      if (srcRef.current) {
+        setSrc("");
+        return true;
+      } else {
+        return false;
+      }
+    };
+    BackHandler.addEventListener("hardwareBackPress", onBackPress);
+
+    return () =>
+      BackHandler.removeEventListener("hardwareBackPress", onBackPress);
+  }, []);
+
   return (
     <FullscreenImageZoomContext.Provider value={setSrc}>
       {src ? (
