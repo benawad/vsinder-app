@@ -41,6 +41,7 @@ export const MessagesScreen: React.FC<MatchesStackNav<"messages">> = ({
         ),
       })),
     {
+      staleTime: 0,
       getFetchMore: ({ messages, hasMore }) =>
         hasMore && messages.length
           ? messages[messages.length - 1].createdAt
