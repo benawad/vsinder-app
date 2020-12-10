@@ -13,6 +13,7 @@ import {
   React1,
   Swift,
   Vue,
+  Rust,
   // @ts-ignore
 } from "../flairs";
 
@@ -35,6 +36,7 @@ const flairToComponent = {
   react: React1,
   swift: Swift,
   vue: Vue,
+  rust: Rust,
 };
 
 export const Flair: React.FC<FlairProps> = ({ size = 24, name }) => {
