@@ -622,6 +622,7 @@ export const flairs = [
   "react",
   "swift",
   "vue",
+  "rust",
 ];
 
 export const flairOptions = flairs.map((value) => ({ value, label: value }));
