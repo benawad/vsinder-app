@@ -150,7 +150,7 @@ export const EditProfile: React.FC<ProfileStackNav<"editProfile">> = ({
                   <FormSpacer>
                     <RadioGroupField
                       name="gender"
-                      label="Gender:"
+                      label="Your Gender:"
                       options={[
                         { label: "male", value: "male" },
                         { label: "female", value: "female" },
