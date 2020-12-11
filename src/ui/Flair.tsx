@@ -5,7 +5,7 @@ interface FlairProps {
   name: keyof typeof flairMap;
 }
 
-const flairMap = {
+export const flairMap = {
   kubernetes: "kubernetes.png",
   python: "python.png",
   flutter: "flutter.png",
@@ -34,7 +34,6 @@ export const Flair: React.FC<FlairProps> = ({ size = 24, name }) => {
   if (!(name in flairMap)) {
     return null;
   }
-  console.log(`https://flair.benawad.com/` + flairMap[name]);
   return (
     <Image
       source={{

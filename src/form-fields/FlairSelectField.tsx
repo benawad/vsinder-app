@@ -2,11 +2,10 @@ import { useField } from "formik";
 import React, { ReactNode } from "react";
 import { ScrollView, TouchableOpacity, View } from "react-native";
 import Modal from "react-native-modal";
-import { flairs } from "../constants";
+import { flairOptions } from "../constants";
 import { ErrorText } from "../ui/ErrorText";
 import { Flair } from "../ui/Flair";
 import { MyButton } from "../ui/MyButton";
-import { MyText } from "../ui/MyText";
 import { MyView } from "../ui/MyView";
 
 interface TextFieldProps {
@@ -45,19 +44,19 @@ export const FlairSelectField: React.FC<TextFieldProps> = ({ name, label }) => {
               }}
               keyboardShouldPersistTaps="always"
             >
-              {flairs.map((flair) => {
+              {flairOptions.map(({ value }) => {
                 return (
                   <TouchableOpacity
-                    key={flair}
+                    key={value}
                     style={{
                       padding: 14,
                     }}
                     onPress={() => {
-                      setValue(flair);
+                      setValue(value);
                       setOpen(false);
                     }}
                   >
-                    <Flair name={flair as any} />
+                    <Flair name={value as any} />
                   </TouchableOpacity>
                 );
               })}
