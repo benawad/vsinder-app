@@ -85,6 +85,10 @@ export const ViewProfile: React.FC<ProfileStackNav<"viewProfile">> = ({
             edit code pics
           </MyButton>
         </View>
+        <MyText style={{ marginTop: 40 }}>
+          (to change your profile picture, you need to change it on GitHub then
+          logout and login again)
+        </MyText>
       </View>
     </ScreenWrapper>
   );
