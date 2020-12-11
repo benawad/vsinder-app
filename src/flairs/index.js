@@ -11,6 +11,8 @@ export { default as Html } from './Html'
 export { default as Java } from "./Java";
 export { default as Javascript } from './Javascript'
 export { default as Julia } from './Julia'
+export { default as Kafka } from './Kafka'
+export { default as Kubernetes } from './Kubernetes'
 export { default as Kotlin } from "./Kotlin";
 export { default as Python } from "./Python";
 export { default as React1 } from "./React";

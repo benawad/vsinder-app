@@ -622,6 +622,8 @@ export const flairs = [
   "java",
   "javascript",
   "julia",
+  "kafka",
+  "kubernetes",
   "kotlin",
   "python",
   "react",
